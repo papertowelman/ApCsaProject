@@ -1,9 +1,6 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
-        window w = new window();
-        game g = new game(w.getCount(), w.getB());
+        Window w = new Window();
+        Game g = new Game(w.getCount(), w);
     }
 }
