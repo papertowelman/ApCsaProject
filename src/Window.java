@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Window {
     private int count = 0;
@@ -32,6 +34,12 @@ public class Window {
         b.setOpaque(false);
         b.setContentAreaFilled(false);
         b.setBorderPainted(false);
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+
+            }
+            }
+        );
 
         // setting frame stuff
         f.setSize(1920,1080);
