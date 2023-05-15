@@ -1,20 +1,26 @@
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
-        JFrame f=new JFrame("Button Example");
-        final JTextField tf=new JTextField();
-        tf.setBounds(50,50, 150,20);
-        JButton b=new JButton("Click Here");
-        b.setBounds(50,100,95,30);
-        b.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                tf.setText("Welcome to Javatpoint.");
-            }
-        });
-        f.add(b);f.add(tf);
-        f.setSize(400,400);
+        int count = 0;
+        JFrame f=new JFrame("Clicker Game");
+        ImageIcon cookie = new ImageIcon("resources/PerfectCookie.png");
+        JButton b = new JButton(cookie);
+        Rectangle x = new Rectangle(100,100,cookie.getIconWidth(),cookie.getIconHeight());
+        JTextField countText = new JTextField("You have " + count + " cookies");
+        countText.setBounds(100, 50, 500, 50);
+        countText.setEditable(false);
+        countText.setOpaque(false);
+        b.setBounds(x);
+        b.setOpaque(false);
+        b.setContentAreaFilled(false);
+        b.setBorderPainted(false);
+        f.setSize(1920,1080);
+        f.add(b);
+        f.add(countText);
         f.setLayout(null);
         f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
