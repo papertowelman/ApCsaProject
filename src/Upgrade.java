@@ -1,6 +1,8 @@
 public abstract class Upgrade {
-    private int noOfThis;
-    public Upgrade(Window w){
+
+    private Game game;
+    public Upgrade(Game g){
+        game = g;
 
     }
 }
