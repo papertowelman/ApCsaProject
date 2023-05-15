@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Window w = new Window();
-        Game g = new Game(w);
+        Game g = new Game();
+        Window w = new Window(g);
     }
 }

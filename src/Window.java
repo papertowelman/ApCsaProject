@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Window {
-    private int count = 0;
+    Game game;
     private JFrame f;
     private final ImageIcon cookie;
     private final ImageIcon cursor;
@@ -14,7 +14,8 @@ public class Window {
     private JButton u2;
     private Rectangle x;
     private JTextField countText;
-    public Window(){
+    public Window(Game g){
+        game = g;
         // init
         f=new JFrame("Clicker Game");
         cookie = new ImageIcon("resources/PerfectCookie.png");
@@ -22,7 +23,7 @@ public class Window {
         factory = new ImageIcon("resources/PerfectCookie.png");
         b = new JButton(cookie);
         x = new Rectangle(100,100,cookie.getIconWidth(),cookie.getIconHeight());
-        countText = new JTextField("You have " + count + " cookies");
+        countText = new JTextField("You have " + game.getCount() + " cookies");
 
         // setting things
         countText.setBounds(100, 50, 500, 50);
@@ -36,7 +37,8 @@ public class Window {
         b.setBorderPainted(false);
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-
+                game.countUp(1);
+                countText.setText("You have " + game.getCount() + " cookies");
             }
             }
         );
@@ -50,13 +52,6 @@ public class Window {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
 
     public JButton getB() {
         return b;
