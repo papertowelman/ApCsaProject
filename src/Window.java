@@ -58,13 +58,4 @@ public class Window {
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
-
-    public JButton getB() {
-        return b;
-    }
-
-    public JLabel getCountText() {
-        return countText;
-    }
 }

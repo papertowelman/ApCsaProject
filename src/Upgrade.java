@@ -2,9 +2,9 @@ public abstract class Upgrade {
 
     private int noOfThis;
     private int valOfUpgrade;
-    public Upgrade(int x, int y){
-        noOfThis = x;
-        valOfUpgrade = y;
+    public Upgrade(int noOfThis, int valOfUpgrade){
+        this.noOfThis = noOfThis;
+        this.valOfUpgrade = valOfUpgrade;
     }
     public void addOne(){
         noOfThis++;
