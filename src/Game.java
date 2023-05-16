@@ -3,8 +3,9 @@ import java.awt.event.ActionListener;
 
 public class Game {
     private int count;
+    private Cursor cursor;
     public Game(){
-
+        cursor = new Cursor();
     }
     public void countUp(int val){
         count+= val;
@@ -12,5 +13,8 @@ public class Game {
 
     public int getCount() {
         return count;
+    }
+    public void addCursor(){
+        cursor.addOne();
     }
 }
