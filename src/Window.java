@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class Window {
     Game game;
@@ -14,6 +16,8 @@ public class Window {
     private JButton u2;
     private Rectangle x;
     private JLabel countText;
+    private final TimerTask timerTask;
+    private final Timer timer;
     public Window(Game g){
         game = g;
         // init
@@ -25,6 +29,7 @@ public class Window {
         b = new JButton(cookie);
         x = new Rectangle(100,100,cookie.getIconWidth(),cookie.getIconHeight());
         countText = new JLabel("You have " + game.getCount() + " cookies");
+        timer = new Timer();
 
         // setting things
         countText.setBounds(100, 50, 500, 50);;
@@ -38,13 +43,13 @@ public class Window {
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 game.countUp(1);
-                countText.setText("You have " + game.getCount() + " cookies");
             }
             }
         );
         u1.addActionListener(new ActionListener(){
                                 public void actionPerformed(ActionEvent e){
                                     game.addCursor();
+                                    game.setCount(game.getCount()-50);
                                 }
                             }
         );
@@ -57,5 +62,14 @@ public class Window {
         f.setLayout(null);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // run loop
+        this.timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                countText.setText("You have " + game.getCount() + " cookies");
+            }
+        };
+        timer.scheduleAtFixedRate(this.timerTask, 0, 1000);
     }
 }

@@ -16,4 +16,7 @@ public abstract class Upgrade {
     public int getNoOfThis(){
         return noOfThis;
     }
+    public int getCps(){
+        return noOfThis * valOfUpgrade;
+    }
 }
