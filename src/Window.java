@@ -13,22 +13,20 @@ public class Window {
     private JButton u1;
     private JButton u2;
     private Rectangle x;
-    private JTextField countText;
+    private JLabel countText;
     public Window(Game g){
         game = g;
         // init
-        f=new JFrame("Clicker Game");
+        f = new JFrame("Clicker Game");
         cookie = new ImageIcon("resources/PerfectCookie.png");
         cursor = new ImageIcon("resources/PerfectCookie.png");
         factory = new ImageIcon("resources/PerfectCookie.png");
         b = new JButton(cookie);
         x = new Rectangle(100,100,cookie.getIconWidth(),cookie.getIconHeight());
-        countText = new JTextField("You have " + game.getCount() + " cookies");
+        countText = new JLabel("You have " + game.getCount() + " cookies");
 
         // setting things
-        countText.setBounds(100, 50, 500, 50);
-        countText.setEditable(false);
-        countText.setOpaque(false);
+        countText.setBounds(100, 50, 500, 50);;
 
         // setting buttons
         b.setBounds(x);
@@ -57,7 +55,7 @@ public class Window {
         return b;
     }
 
-    public JTextField getCountText() {
+    public JLabel getCountText() {
         return countText;
     }
 }
