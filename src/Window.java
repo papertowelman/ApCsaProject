@@ -1,52 +1,49 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.TimerTask;
 import java.util.Timer;
 
 public class Window {
+
+    // variable deeclarations
     Game game;
-    private JFrame f;
-    private final ImageIcon cookie;
-    private final ImageIcon cursor;
-    private final ImageIcon factory;
-    private JButton b;
-    private JButton u1;
+    private final JFrame F;
+    private final ImageIcon COOKIE;
+    private final ImageIcon CURSOR;
+    private final ImageIcon FACTORY;
+    private final JButton B;
+    private final JButton U1;
     private JButton u2;
-    private Rectangle x;
-    private JLabel countText;
-    private final TimerTask timerTask;
-    private final Timer timer;
+    private final Rectangle RECT;
+    private final JLabel COUNT_TEXT;
+    private final TimerTask TIMER_TASK;
+    private final Timer TIMER;
     public Window(Game g){
         game = g;
         // init
-        f = new JFrame("Clicker Game");
-        cookie = new ImageIcon("resources/PerfectCookie.png");
-        cursor = new ImageIcon("resources/cursorbuy.png");
-        factory = new ImageIcon("resources/PerfectCookie.png");
-        u1 = new JButton(cursor);
-        b = new JButton(cookie);
-        x = new Rectangle(100,100,cookie.getIconWidth(),cookie.getIconHeight());
-        countText = new JLabel("You have " + game.getCount() + " cookies");
-        timer = new Timer();
+        F = new JFrame("Clicker Game");
+        COOKIE = new ImageIcon("resources/PerfectCookie.png");
+        CURSOR = new ImageIcon("resources/cursorbuy.png");
+        FACTORY = new ImageIcon("resources/PerfectCookie.png");
+        U1 = new JButton(CURSOR);
+        B = new JButton(COOKIE);
+        RECT = new Rectangle(100,100, COOKIE.getIconWidth(), COOKIE.getIconHeight());
+        COUNT_TEXT = new JLabel("You have " + game.getCount() + " cookies");
+        TIMER = new Timer();
 
         // setting things
-        countText.setBounds(100, 50, 500, 50);;
+        COUNT_TEXT.setBounds(100, 50, 500, 50);
 
         // setting buttons
-        u1.setBounds(800,100,cursor.getIconWidth(),cursor.getIconHeight());
-        b.setBounds(x);
-        b.setOpaque(false);
-        b.setContentAreaFilled(false);
-        b.setBorderPainted(false);
-        b.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                game.countUp(1);
-            }
-            }
-        );
-        u1.addActionListener(e -> {
+        U1.setBounds(800,100, CURSOR.getIconWidth(), CURSOR.getIconHeight());
+        B.setBounds(RECT);
+        B.setOpaque(false);
+        B.setContentAreaFilled(false);
+        B.setBorderPainted(false);
+
+        // adding action listeners to know when button is pressed
+        B.addActionListener(e -> game.countUp(1));
+        U1.addActionListener(e -> {
                     if (game.getCount() >= 50) {
                         game.setCount(game.getCount() - 50);
                         game.addCursor();
@@ -55,21 +52,22 @@ public class Window {
         );
 
         // setting frame stuff
-        f.setSize(1920,1080);
-        f.add(b);
-        f.add(u1);
-        f.add(countText);
-        f.setLayout(null);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        F.setSize(1920,1080);
+        F.add(B);
+        F.add(U1);
+        F.add(COUNT_TEXT);
+        F.setLayout(null);
+        F.setVisible(true);
+        F.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // run loop
-        this.timerTask = new TimerTask() {
+        this.TIMER_TASK = new TimerTask() {
             @Override
             public void run() {
-                countText.setText("You have " + game.getCount() + " cookies");
+                COUNT_TEXT.setText("You have " + game.getCount() + " cookies");
             }
         };
-        timer.scheduleAtFixedRate(this.timerTask, 0, 1);
+        // this lets loop run every milisecond
+        TIMER.scheduleAtFixedRate(this.TIMER_TASK, 0, 1);
     }
 }
