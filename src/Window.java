@@ -46,12 +46,12 @@ public class Window {
             }
             }
         );
-        u1.addActionListener(new ActionListener(){
-                                public void actionPerformed(ActionEvent e){
-                                    game.addCursor();
-                                    game.setCount(game.getCount()-50);
-                                }
-                            }
+        u1.addActionListener(e -> {
+                    if (game.getCount() >= 50) {
+                        game.setCount(game.getCount() - 50);
+                        game.addCursor();
+                    }
+                }
         );
 
         // setting frame stuff
@@ -70,6 +70,6 @@ public class Window {
                 countText.setText("You have " + game.getCount() + " cookies");
             }
         };
-        timer.scheduleAtFixedRate(this.timerTask, 0, 1000);
+        timer.scheduleAtFixedRate(this.timerTask, 0, 1);
     }
 }
