@@ -1,22 +1,31 @@
-public abstract class Upgrade {
+public class Upgrade {
 
     private int noOfThis;
-    private int valOfUpgrade;
-    public Upgrade(int noOfThis, int valOfUpgrade){
+    private final int price;
+    private final int cps;
+    private final String name;
+
+
+    public Upgrade(int noOfThis, int price, int cps, String name) {
         this.noOfThis = noOfThis;
-        this.valOfUpgrade = valOfUpgrade;
+        this.price = price;
+        this.cps = cps;
+        this.name = name;
     }
-    public void addOne(){
+
+    public void addOne() {
         noOfThis++;
     }
 
-    public int getValOfUpgrade() {
-        return valOfUpgrade;
-    }
-    public int getNoOfThis(){
+    public int getNoOfThis() {
         return noOfThis;
     }
-    public int getCps(){
-        return noOfThis * valOfUpgrade;
+
+    public int getCps() {
+        return noOfThis * cps;
+    }
+
+    public boolean canBuy(int cookieCount) {
+        return price <= cookieCount;
     }
 }
