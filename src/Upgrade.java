@@ -28,4 +28,7 @@ public class Upgrade {
     public boolean canBuy(int cookieCount) {
         return price <= cookieCount;
     }
+    public int getPrice() {
+        return this.price;
+    }
 }

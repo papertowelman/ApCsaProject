@@ -48,10 +48,7 @@ public class Window {
         // adding action listeners to know when button is pressed
         B.addActionListener(e -> game.countUp(1));
         U1.addActionListener(e -> {
-                if (game.getCount() >= 50) {
-                    game.setCount(game.getCount() - 50);
-                    game.addCursor();
-                }
+                    game.buyUpgrade(0);
             }
         );
 

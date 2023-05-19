@@ -10,6 +10,7 @@ public class Game {
     public Game() {
         upgrades = new ArrayList<Upgrade>();
         upgrades.add(new Upgrade(0, 50, 1, "Cursor"));
+        upgrades.add(new Upgrade(0, 200, 5, "Factory"));
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
@@ -28,11 +29,10 @@ public class Game {
         return count;
     }
 
-    public void addCursor() {
-        upgrades.get(0).addOne();
-    }
-
-    public void setCount(int set) {
-        count = set;
+    public void buyUpgrade(int type){
+        if (upgrades.get(type).canBuy(this.count)){
+            this.count -= upgrades.get(type).getPrice();
+            upgrades.get(type).addOne();
+        }
     }
 }
