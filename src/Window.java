@@ -19,6 +19,7 @@ public class Window {
     private JButton U2;
     private final Rectangle RECT;
     private final JLabel COUNT_TEXT;
+    private final JLabel CPS_TEXT;
     private final TimerTask TIMER_TASK;
     private final Timer TIMER;
 
@@ -34,10 +35,12 @@ public class Window {
         U2 = new JButton(FACTORY);
         RECT = new Rectangle(100, 100, COOKIE.getIconWidth(), COOKIE.getIconHeight());
         COUNT_TEXT = new JLabel("You have " + game.getCount() + " cookies");
+        CPS_TEXT = new JLabel(game.getAveragePerSecond() + " cookies per second");
         TIMER = new Timer();
 
         // setting things
         COUNT_TEXT.setBounds(100, 50, 500, 50);
+        CPS_TEXT.setBounds(100, 25, 200, 50);
 
         // setting buttons
         U1.setBounds(800, 100, CURSOR.getIconWidth(), CURSOR.getIconHeight());
@@ -67,6 +70,7 @@ public class Window {
         F.add(U1);
         F.add(U2);
         F.add(COUNT_TEXT);
+        F.add(CPS_TEXT);
         F.setLayout(null);
         F.setVisible(true);
         F.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,6 +80,7 @@ public class Window {
             @Override
             public void run() {
                 COUNT_TEXT.setText("You have " + game.getCount() + " cookies");
+                CPS_TEXT.setText(game.getAveragePerSecond() + " cookies per second");
             }
         };
         // this lets loop run every milisecond

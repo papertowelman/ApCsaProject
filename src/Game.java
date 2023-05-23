@@ -37,4 +37,11 @@ public class Game {
             upgrades.get(type).addOne();
         }
     }
+    public double getAveragePerSecond(){
+        double ret = 0;
+        for(Upgrade i : upgrades){
+            ret += i.getCps();
+        }
+        return ret;
+    }
 }
