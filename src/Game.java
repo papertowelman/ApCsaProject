@@ -15,7 +15,9 @@ public class Game {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                count += upgrades.get(0).getCps();
+                for(int i = 0; i < upgrades.size(); i++){
+                    count += upgrades.get(i).getCps();
+                }
             }
         };
         timer.scheduleAtFixedRate(timerTask, 0, 1000);
