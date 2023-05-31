@@ -27,9 +27,9 @@ public class Window {
         game = g;
         // init
         F = new JFrame("Clicker Game");
-        COOKIE = new ImageIcon("resources/PerfectCookie.png");
-        CURSOR = new ImageIcon("resources/cursorbuy.png");
-        FACTORY = new ImageIcon("resources/FactoryIconTransparent.png");
+        COOKIE = new ImageIcon("resources/cookie.png");
+        CURSOR = new ImageIcon("resources/cursorbu.png");
+        FACTORY = new ImageIcon("resources/Factorybuy.png");
         U1 = new JButton(CURSOR);
         B = new JButton(COOKIE);
         U2 = new JButton(FACTORY);
